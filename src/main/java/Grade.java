@@ -1,5 +1,4 @@
 import javax.persistence.*;
-
 @Entity
 public class Grade {
     @Id

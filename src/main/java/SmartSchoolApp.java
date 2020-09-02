@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SmartSchoolApp {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("smartSchoolDB");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SmartSchoolDB");
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
 
@@ -23,12 +23,27 @@ public class SmartSchoolApp {
         Module module2 = new Module();
 
         Exam exam1 = new Exam();
+
         Grade grade1 = new Grade();
+        grade1.setName("Weak");
+        grade1.setExam(exam1);
+        grade1.setPerson(person1);
+
+        User user1 = new User();
+        user1.setPerson(person1);
+        user1.setLogin("O_M_E_R");
+        user1.setPasswordhash("Qwert1234");
+        user1.setActive(true);
 
         List<Course> courses = new ArrayList<Course>();
         List<Module> modules = new ArrayList<Module>();
         List<Exam> exams = new ArrayList<Exam>();
         List<Grade> grades = new ArrayList<Grade>();
+        grades.add(grade1);
+
+        person1.setCurse(course1);
+        person1.setUser(user1);
+        person1.setGrade(grades);
 
         em.getTransaction().begin();
         em.persist(person1);

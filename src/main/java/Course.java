@@ -1,3 +1,7 @@
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Columns;
+import org.hibernate.query.criteria.internal.expression.function.LengthFunction;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,6 +11,7 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(length = 2500)
     private String description;
     private String code;
     private String imageUrl;
@@ -16,6 +21,13 @@ public class Course {
     @OneToMany (mappedBy = "course")
     private List<Person> person;
 
+    public List<Person> getPerson() {
+        return person;
+    }
+
+    public void setPerson(List<Person> person) {
+        this.person = person;
+    }
 
     public Long getId() {
         return id;
@@ -83,6 +95,7 @@ public class Course {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", active=" + active +
                 ", modules=" + modules +
+                ", person=" + person +
                 '}';
     }
 }

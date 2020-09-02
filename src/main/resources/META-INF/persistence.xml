@@ -2,7 +2,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <!-- Define persistence.xml unit -->
-    <persistence-unit name="smartSchoolDB" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="SmartSchoolDB" transaction-type="RESOURCE_LOCAL">
         <properties>
             <!-- database connection -->
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://moktok.javawebdev.com:33306/omer"/>

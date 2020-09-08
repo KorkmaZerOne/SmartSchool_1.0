@@ -1,3 +1,5 @@
+package be.intecbrussel.Model;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,7 +9,8 @@ public class Module {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @Column(length=2500)
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     private String description;
     @ManyToOne(cascade = CascadeType.ALL)
     private Course course;
@@ -38,11 +41,11 @@ public class Module {
         this.description = description;
     }
 
-    public Course getCurse() {
+    public Course getCourse() {
         return course;
     }
 
-    public void setCurse(Course curse) {
+    public void setCourse(Course course) {
         this.course = course;
     }
 
@@ -56,7 +59,7 @@ public class Module {
 
     @Override
     public String toString() {
-        return "Module{" +
+        return "be.intecbrussel1.Model.Module{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

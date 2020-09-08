@@ -1,10 +1,13 @@
+package be.intecbrussel.Model;
+
 import javax.persistence.*;
 
 @Entity
 public class User {
     @Id
+    @Column(unique = true , nullable = false )
     private String login;
-    private String passwordhash;
+    private String passwordHash;
     private boolean active;
     @OneToOne(mappedBy = "user")
     private Person person;
@@ -17,12 +20,12 @@ public class User {
         this.login = login;
     }
 
-    public String getPasswordhash() {
-        return passwordhash;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPasswordhash(String passwordhash) {
-        this.passwordhash = passwordhash;
+    public void setPasswordhash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public boolean isActive() {
@@ -43,9 +46,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "be.intecbrussel1.Model.User{" +
                 ", login='" + login + '\'' +
-                ", passwordhash='" + passwordhash + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
                 ", active=" + active +
                 ", person=" + person +
                 '}';

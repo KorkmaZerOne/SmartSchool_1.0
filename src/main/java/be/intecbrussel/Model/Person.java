@@ -1,3 +1,5 @@
+package be.intecbrussel.Model;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,7 +12,9 @@ public class Person {
     private String familyName;
     private Gender gender;
     @ManyToOne(cascade = CascadeType.ALL)
-    private Course course;
+    private Course courseActive;
+    @ManyToMany(mappedBy = "persons")
+    private List<Course> courseHistory;
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
     @OneToMany(mappedBy = "person")
@@ -48,12 +52,20 @@ public class Person {
         this.gender = gender;
     }
 
-    public Course getCurse() {
-        return course;
+    public Course getCourseActive() {
+        return courseActive;
     }
 
-    public void setCurse(Course course) {
-        this.course = course;
+    public void setCourseActive(Course courseActive) {
+        this.courseActive = courseActive;
+    }
+
+    public List<Course> getCourseHistory() {
+        return courseHistory;
+    }
+
+    public void setCourseHistory(List<Course> courseHistory) {
+        this.courseHistory = courseHistory;
     }
 
     public User getUser() {
@@ -74,12 +86,13 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "be.intecbrussel1.Model.Person{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", familyName='" + familyName + '\'' +
                 ", gender=" + gender +
-                ", course=" + course +
+                ", courseActive=" + courseActive +
+                ", courseHistory=" + courseHistory +
                 ", user=" + user +
                 ", grade=" + grade +
                 '}';

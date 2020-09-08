@@ -1,6 +1,4 @@
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Columns;
-import org.hibernate.query.criteria.internal.expression.function.LengthFunction;
+package be.intecbrussel.Model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,23 +9,17 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @Column(length = 2500)
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     private String description;
     private String code;
+    @Basic(fetch = FetchType.LAZY)
     private String imageUrl;
     private boolean active;
     @OneToMany(mappedBy = "course")
     private List<Module> modules;
-    @OneToMany (mappedBy = "course")
-    private List<Person> person;
-
-    public List<Person> getPerson() {
-        return person;
-    }
-
-    public void setPerson(List<Person> person) {
-        this.person = person;
-    }
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Person> persons;
 
     public Long getId() {
         return id;
@@ -87,7 +79,7 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
+        return "be.intecbrussel1.Model.Course{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
@@ -95,7 +87,6 @@ public class Course {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", active=" + active +
                 ", modules=" + modules +
-                ", person=" + person +
                 '}';
     }
 }

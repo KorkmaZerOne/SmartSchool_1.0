@@ -1,5 +1,8 @@
+package be.intecbrussel.Model;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Exam {
@@ -7,13 +10,18 @@ public class Exam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @Column(length = 2500)
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     private String description;
     private LocalDate date;
     private int weight;
     private int total;
     @ManyToOne(cascade = CascadeType.ALL)
     private Module module;
+    @OneToOne
+    private Exam examGroup;
+    @OneToMany
+    private List<Exam> subExams;
 
     public Long getId() {
         return id;
@@ -71,9 +79,25 @@ public class Exam {
         this.module = module;
     }
 
+    public Exam getExamGroup() {
+        return examGroup;
+    }
+
+    public void setExamGroup(Exam examGroup) {
+        this.examGroup = examGroup;
+    }
+
+    public List<Exam> getSubExams() {
+        return subExams;
+    }
+
+    public void setSubExams(List<Exam> subExams) {
+        this.subExams = subExams;
+    }
+
     @Override
     public String toString() {
-        return "Exam{" +
+        return "be.intecbrussel1.Model.Exam{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
@@ -81,6 +105,8 @@ public class Exam {
                 ", weight=" + weight +
                 ", total=" + total +
                 ", module=" + module +
+                ", examGroup=" + examGroup +
+                ", subExams=" + subExams +
                 '}';
     }
 }

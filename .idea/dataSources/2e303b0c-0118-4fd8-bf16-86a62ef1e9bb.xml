@@ -1257,7 +1257,7 @@ ALL PRIVILEGES|omer:null
       <DataType>bit(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="370" parent="287" name="passwordhash">
+    <column id="370" parent="287" name="passwordHash">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>

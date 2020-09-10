@@ -15,9 +15,9 @@ import java.util.List;
 
 public class SmartSchoolApp {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SmartSchoolDB");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction et = em.getTransaction();
+        // EntityManagerFactory emf = Persistence.createEntityManagerFactory("SmartSchoolDB");
+        //EntityManager em = emf.createEntityManager();
+        //EntityTransaction et = em.getTransaction();
 
         Person person1 = new Person();
         Course course1 = new Course();
@@ -41,6 +41,7 @@ public class SmartSchoolApp {
         course1.setCode("java2020");
         course1.setDescription("Deze opleiding richt zich tot werkzoekenden met interesse in programmatie.");
         course1.setImageUrl("http://www.intecbrussel.be/opleidingen/java-developer-1//");
+        course1.setModules(modules);
 
         exam1.setName("Evaluation");
         exam1.setDate(LocalDate.now());
@@ -48,6 +49,7 @@ public class SmartSchoolApp {
         exam1.setModule(module1);
         exam1.setWeight(50);
         exam1.setTotal(100);
+        exams.add(exam1);
 
         grade1.setAbsent(true);
         grade1.setComment("Goed Gedaan");
@@ -64,22 +66,22 @@ public class SmartSchoolApp {
 
         List<Course> courses = new ArrayList<Course>();
         courses.add(course1);
-        courses.add(course2);
+        // courses.add(course2);
 
         module1.setName("Java Fundamental");
         module1.setCourse(course1);
         module1.setExams(exams);
-        module1.setCourse(course2);
+        //module1.setCourse(course2);
         module1.setDescription("Deze opleiding richt zich tot werkzoekenden met interesse in programmatie.");
 
         modules.add(module1);
-        modules.add(module2);
+        //modules.add(module2);
 
         grades.add(grade1);
 
         person1.setUser(user1);
         person1.setGrade(grades);
-
+/*
         em.getTransaction().begin();
         em.persist(person1);
         em.persist(course1);
@@ -87,29 +89,34 @@ public class SmartSchoolApp {
         em.persist(exam1);
         em.persist(grade1);
         em.persist(user1);
-        em.getTransaction().commit();
+        em.getTransaction().commit();*/
 
         ExamService examService = new ExamService();
+        examService.addExam(exam1);
         examService.outputExam(1L);
         examService.outputAllExams();
 
         CourseService courseService = new CourseService();
+        courseService.addCourse(course1);
         courseService.outputCourse(1L);
         courseService.outputAllCourses();
 
         ModuleService moduleService = new ModuleService();
+        moduleService.addModule(module1);
         moduleService.outputModule(1L);
         moduleService.outputAllModules();
 
         PersonService personService = new PersonService();
+        personService.addPerson(person1);
         personService.outputPerson(1);
         personService.outputAllPersons();
 
         UserService userService = new UserService();
+        userService.addUser(user1);
         userService.outputUser("O_M_E_R");
         userService.outputAllUsers();
 
-        em.close();
-        emf.close();
+        // em.close();
+        // emf.close();
     }
 }

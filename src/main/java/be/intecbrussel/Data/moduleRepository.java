@@ -8,10 +8,19 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
+import java.util.Optional;
 
 public class moduleRepository {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("SmartSchoolDB");
+
+    public Optional<Module> addModule(Module module) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(module);
+        em.getTransaction().commit();
+        return Optional.of(module);
+    }
 
     public List<Module> getAllModules(){
         EntityManager em = emf.createEntityManager();

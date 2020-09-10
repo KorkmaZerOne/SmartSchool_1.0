@@ -1,25 +1,25 @@
 package be.intecbrussel.Data;
 
 import be.intecbrussel.Model.Course;
-import be.intecbrussel.Model.Grade;
+import be.intecbrussel.Model.Exam;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class gradeRepository {
+public class courseRepository {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("SmartSchoolDB");
 
-    public List<Grade> getAllGrades(){
+    public List<Course> getAllCourses() {
         EntityManager em = emf.createEntityManager();
-        return em.createQuery("SELECT g FROM Grade g" , Grade.class).getResultList();
+        return em.createQuery("SELECT c FROM Course c ", Course.class).getResultList();
     }
 
-    public Grade getCourseById(Long id) {
+    public Course getCourseById(Long id) {
         EntityManager em = emf.createEntityManager();
-        System.out.println("Grade by ID" + id);
+        System.out.println("Course by ID" + id);
         System.out.println("-------------------------------");
-        return em.find(Grade.class, id);
+        return em.find(Course.class, id);
     }
 }

@@ -2,6 +2,7 @@ package be.intecbrussel;
 
 import be.intecbrussel.Model.*;
 import be.intecbrussel.Model.Module;
+import be.intecbrussel.Service.*;
 
 
 import javax.persistence.EntityManager;
@@ -85,7 +86,28 @@ public class SmartSchoolApp {
         em.persist(module1);
         em.persist(exam1);
         em.persist(grade1);
+        em.persist(user1);
         em.getTransaction().commit();
+
+        ExamService examService = new ExamService();
+        examService.outputExam(1L);
+        examService.outputAllExams();
+
+        CourseService courseService = new CourseService();
+        courseService.outputCourse(1L);
+        courseService.outputAllCourses();
+
+        ModuleService moduleService = new ModuleService();
+        moduleService.outputModule(1L);
+        moduleService.outputAllModules();
+
+        PersonService personService = new PersonService();
+        personService.outputPerson(1);
+        personService.outputAllPersons();
+
+        UserService userService = new UserService();
+        userService.outputUser("O_M_E_R");
+        userService.outputAllUsers();
 
         em.close();
         emf.close();

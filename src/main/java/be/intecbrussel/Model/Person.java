@@ -10,13 +10,14 @@ public class Person {
     private int id;
     private String firstName;
     private String familyName;
+    //@Enumerated(EnumType.STRING)
     private Gender gender;
     @ManyToOne(cascade = CascadeType.ALL)
     private Course courseActive;
     @ManyToMany(mappedBy = "persons")
     private List<Course> courseHistory;
-    @OneToOne(cascade = CascadeType.ALL)
-    private User user;
+    //@OneToOne(cascade = CascadeType.ALL)
+    //private User user;
     @OneToMany(mappedBy = "person")
     private List<Grade> grade;
 
@@ -68,13 +69,13 @@ public class Person {
         this.courseHistory = courseHistory;
     }
 
-    public User getUser() {
+   /* public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
+    }*/
 
     public List<Grade> getGrade() {
         return grade;
@@ -86,14 +87,13 @@ public class Person {
 
     @Override
     public String toString() {
-        return "be.intecbrussel1.Model.Person{" +
+        return "Person{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", familyName='" + familyName + '\'' +
                 ", gender=" + gender +
                 ", courseActive=" + courseActive +
                 ", courseHistory=" + courseHistory +
-                ", user=" + user +
                 ", grade=" + grade +
                 '}';
     }

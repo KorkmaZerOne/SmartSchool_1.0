@@ -79,7 +79,7 @@ public class Course {
 
     @Override
     public String toString() {
-        return "be.intecbrussel1.Model.Course{" +
+        return "Course{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
@@ -87,6 +87,7 @@ public class Course {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", active=" + active +
                 ", modules=" + modules +
+                ", persons=" + persons +
                 '}';
     }
 }

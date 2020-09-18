@@ -1193,79 +1193,79 @@ ALL PRIVILEGES|omer:null
       <Position>5</Position>
       <DataType>bigint|0s</DataType>
     </column>
-    <column id="356" parent="285" name="user_login">
-      <Position>6</Position>
-      <DataType>varchar(255)|0s</DataType>
-    </column>
-    <index id="357" parent="285" name="FKgo4x4a4xb1oywj64lpr7op80m">
+    <index id="356" parent="285" name="FKgo4x4a4xb1oywj64lpr7op80m">
       <ColNames>courseActive_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="358" parent="285" name="FKrc2wdi96k4vm64w7djdnaeaic">
-      <ColNames>user_login</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="359" parent="285" name="PRIMARY">
+    <key id="357" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="360" parent="285" name="FKgo4x4a4xb1oywj64lpr7op80m">
+    <foreign-key id="358" parent="285" name="FKgo4x4a4xb1oywj64lpr7op80m">
       <ColNames>courseActive_id</ColNames>
       <RefTableName>Course</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="361" parent="285" name="FKrc2wdi96k4vm64w7djdnaeaic">
-      <ColNames>user_login</ColNames>
-      <RefTableName>User</RefTableName>
-      <RefColNames>login</RefColNames>
-    </foreign-key>
-    <column id="362" parent="286" name="ProjectId">
+    <column id="359" parent="286" name="ProjectId">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="363" parent="286" name="Explanation">
+    <column id="360" parent="286" name="Explanation">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
     </column>
-    <column id="364" parent="286" name="StartDate">
+    <column id="361" parent="286" name="StartDate">
       <Position>3</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="365" parent="286" name="Price">
+    <column id="362" parent="286" name="Price">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="366" parent="286" name="EndDate">
+    <column id="363" parent="286" name="EndDate">
       <Position>5</Position>
       <DataType>date|0s</DataType>
     </column>
-    <key id="367" parent="286" name="PRIMARY">
+    <key id="364" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ProjectId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="368" parent="287" name="login">
+    <column id="365" parent="287" name="login">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="369" parent="287" name="active">
+    <column id="366" parent="287" name="active">
       <Position>2</Position>
       <DataType>bit(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="370" parent="287" name="passwordHash">
+    <column id="367" parent="287" name="passwordHash">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="371" parent="287" name="PRIMARY">
+    <column id="368" parent="287" name="person_id">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <index id="369" parent="287" name="FKtjydbpktvifo7uc55n1fm2wet">
+      <ColNames>person_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="370" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>login</ColNames>
       <Primary>1</Primary>
     </key>
+    <foreign-key id="371" parent="287" name="FKtjydbpktvifo7uc55n1fm2wet">
+      <ColNames>person_id</ColNames>
+      <RefTableName>Person</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
     <column id="372" parent="288" name="EmployeeId">
       <Position>1</Position>
       <DataType>int|0s</DataType>

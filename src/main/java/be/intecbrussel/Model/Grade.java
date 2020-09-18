@@ -83,17 +83,4 @@ public class Grade {
         this.date = date;
     }
 
-    @Override
-    public String toString() {
-        return "be.intecbrussel1.Model.Grade{" +
-                "id=" + id +
-                ", person=" + person +
-                ", exam=" + exam +
-                ", gradeValue=" + gradeValue +
-                ", comment='" + comment + '\'' +
-                ", internalComment='" + internalComment + '\'' +
-                ", absent=" + absent +
-                ", date=" + date +
-                '}';
-    }
 }

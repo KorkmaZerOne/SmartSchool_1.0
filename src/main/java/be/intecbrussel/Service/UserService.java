@@ -16,7 +16,7 @@ public class UserService {
         repository.getAllUsers();
     }
 
-    public void outputUser(String login){
+    public void outputUserByLogin(String login){
         userRepository repository = new userRepository();
         repository.getUserByLogin(login);
     }

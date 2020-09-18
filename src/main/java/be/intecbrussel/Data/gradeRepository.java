@@ -1,36 +1,45 @@
 package be.intecbrussel.Data;
 
-import be.intecbrussel.Model.Course;
-import be.intecbrussel.Model.Exam;
 import be.intecbrussel.Model.Grade;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.List;
 import java.util.Optional;
 
 public class gradeRepository {
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("SmartSchoolDB");
 
-    public Optional<Grade> addGrade(Grade grade) {
-        EntityManager em = emf.createEntityManager();
+    public void addGrade(Grade grade) {
+        EntityManager em = PersistenceProvider.createEM();
         em.getTransaction().begin();
         em.persist(grade);
         em.getTransaction().commit();
-        return Optional.of(grade);
     }
 
-
-    public List<Grade> getAllGrades(){
-        EntityManager em = emf.createEntityManager();
-        return em.createQuery("SELECT g FROM Grade g" , Grade.class).getResultList();
+    public List<Grade> getAllGrades() {
+        EntityManager em = PersistenceProvider.createEM();
+        return em.createQuery("SELECT g FROM Grade g", Grade.class).getResultList();
     }
 
-    public Grade getCourseById(Long id) {
-        EntityManager em = emf.createEntityManager();
-        System.out.println("Grade by ID" + id);
-        System.out.println("-------------------------------");
-        return em.find(Grade.class, id);
+    public Optional<Grade> getGradeById(Long id) {
+        EntityManager em = PersistenceProvider.createEM();
+        return Optional.of(em.find(Grade.class, id));
+    }
+
+    public void updateGrade(Grade grade) {
+        EntityManager em = PersistenceProvider.createEM();
+        em.getTransaction().begin();
+        em.merge(grade);
+        em.getTransaction().commit();
+    }
+
+    public void deleteGrade(Grade grade) {
+        EntityManager em = PersistenceProvider.createEM();
+        em.getTransaction().begin();
+        em.remove(grade);
+        em.getTransaction().commit();
+    }
+
+    public void deleteGradeById(Long id) {
+        getGradeById(id).ifPresent(this::deleteGrade);
     }
 }

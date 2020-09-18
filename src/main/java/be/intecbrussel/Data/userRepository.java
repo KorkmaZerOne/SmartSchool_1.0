@@ -1,6 +1,5 @@
 package be.intecbrussel.Data;
 
-import be.intecbrussel.Model.Course;
 import be.intecbrussel.Model.User;
 
 import javax.persistence.*;
@@ -9,25 +8,38 @@ import java.util.Optional;
 
 public class userRepository {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("SmartSchoolDB");
-
-    public Optional<User> addUser(User user) {
-        EntityManager em = emf.createEntityManager();
-            em.getTransaction().begin();
-            em.persist(user);
-            em.getTransaction().commit();
-        return Optional.of(user);
-    }
-    public List<User> getAllUsers(){
-        EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("SELECT u FROM User u");
-        return em.createQuery("SELECT u FROM User u " , User.class).getResultList();
+    public void addUser(User user) {
+        EntityManager em = PersistenceProvider.createEM();
+        em.getTransaction().begin();
+        em.persist(user);
+        em.getTransaction().commit();
     }
 
-    public User getUserByLogin (String login){
-        EntityManager em = emf.createEntityManager();
-        System.out.println("User by Login" + login);
-        System.out.println("-------------------------------");
-        return em.find(User.class , login);
+    public List<User> getAllUsers() {
+        EntityManager em = PersistenceProvider.createEM();
+        return em.createQuery("SELECT u FROM User u ", User.class).getResultList();
+    }
+
+    public Optional<User> getUserByLogin(String login) {
+        EntityManager em = PersistenceProvider.createEM();
+        return Optional.of(em.find(User.class, login));
+    }
+
+    public void updateUser(User user) {
+        EntityManager em = PersistenceProvider.createEM();
+        em.getTransaction().begin();
+        em.merge(user);
+        em.getTransaction().commit();
+    }
+
+    public void deleteUser(User user) {
+        EntityManager em = PersistenceProvider.createEM();
+        em.getTransaction().begin();
+        em.remove(user);
+        em.getTransaction().commit();
+    }
+
+    public void deleteUserByLogin(String login) {
+        getUserByLogin(login).ifPresent(this::deleteUser);
     }
 }

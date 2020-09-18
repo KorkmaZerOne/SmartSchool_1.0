@@ -95,18 +95,4 @@ public class Exam {
         this.subExams = subExams;
     }
 
-    @Override
-    public String toString() {
-        return "be.intecbrussel1.Model.Exam{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", date=" + date +
-                ", weight=" + weight +
-                ", total=" + total +
-                ", module=" + module +
-                ", examGroup=" + examGroup +
-                ", subExams=" + subExams +
-                '}';
-    }
 }

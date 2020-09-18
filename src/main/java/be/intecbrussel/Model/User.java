@@ -9,7 +9,7 @@ public class User {
     private String login;
     private String passwordHash;
     private boolean active;
-    @OneToOne(mappedBy = "user")
+    @OneToOne //unidirectional relations
     private Person person;
 
     public String getLogin() {
@@ -24,7 +24,7 @@ public class User {
         return passwordHash;
     }
 
-    public void setPasswordhash(String passwordHash) {
+    public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
 
@@ -46,8 +46,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "be.intecbrussel1.Model.User{" +
-                ", login='" + login + '\'' +
+        return "User{" +
+                "login='" + login + '\'' +
                 ", passwordHash='" + passwordHash + '\'' +
                 ", active=" + active +
                 ", person=" + person +

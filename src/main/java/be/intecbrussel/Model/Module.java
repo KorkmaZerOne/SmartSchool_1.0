@@ -57,14 +57,4 @@ public class Module {
         this.exams = exams;
     }
 
-    @Override
-    public String toString() {
-        return "be.intecbrussel1.Model.Module{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", curse=" + course +
-                ", exams=" + exams +
-                '}';
-    }
 }

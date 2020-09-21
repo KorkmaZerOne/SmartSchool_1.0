@@ -15,9 +15,6 @@ public class SmartSchoolApp {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SmartSchoolDB");
 
-        Person person1 = new Person();
-        Person person2 = new Person();
-        Course course1 = new Course();
         Module module1 = new Module();
         Exam exam1 = new Exam();
         Grade grade1 = new Grade();
@@ -30,6 +27,8 @@ public class SmartSchoolApp {
         List<Module> modules = new ArrayList<Module>();
         List<Grade> grades = new ArrayList<Grade>();
 
+
+        Course course1 = new Course();
         course1.setName("Java EE");
         course1.setActive(true);
         course1.setCode("java2020");
@@ -54,13 +53,11 @@ public class SmartSchoolApp {
         exam1.setSubExams(exams);
         exams.add(exam1);
 
-        grade1.setAbsent(true);
-        grade1.setComment("Goed Gedaan");
-        grade1.setDate(LocalDate.of(2020, 9, 11));
-        grade1.setExam(exam1);
-        grade1.setInternalComment("No internal Comment");
-        grade1.setPerson(person1);
-        grade1.setGradeValue(BigDecimal.ONE);
+        Person person1 = new Person();
+        Person person2 = new Person();
+        Person person3 = new Person("Oz" , "Great" , Gender.MALE , courses);
+        Person person4 = new Person("Lion" , "King" , Gender.MALE , courses);
+        Person person5 = new Person();
 
         person1.setFirstName("Omer");
         person1.setFamilyName("Korkmaz");
@@ -76,7 +73,23 @@ public class SmartSchoolApp {
         person2.setCourseHistory(courses);
         person2.setGrade(grades);
 
+        person5.setFirstName("hay");
+        person5.setFamilyName("durden");
+        person5.setGender(Gender.AGENDER);
+
         persons.add(person1);
+        persons.add(person2);
+        persons.add(person3);
+        persons.add(person4);
+        persons.add(person5);
+
+        grade1.setAbsent(true);
+        grade1.setComment("Goed Gedaan");
+        grade1.setDate(LocalDate.of(2020, 9, 11));
+        grade1.setExam(exam1);
+        grade1.setInternalComment("No internal Comment");
+        grade1.setPerson(person1);
+        grade1.setGradeValue(BigDecimal.ONE);
 
         user1.setPerson(person1);
         user1.setLogin("O_M_E_R");
@@ -91,23 +104,23 @@ public class SmartSchoolApp {
         users.add(user1);
         users.add(user2);
 
+
+
+        PersonService personService = new PersonService();
+        personService.addPerson(person4);
+        personService.addPerson(person3);
+       // personService.addPerson(person3);
+       // personService.addPerson(person4);
+        //personService.addPerson(person5);
+
+       // personService.outputAllPersons();
+
         UserService userService = new UserService();
         userService.addUser(user1);
-        Person person3 = new Person();
-        PersonService personService = new PersonService();
-
-        personService.addPerson(person1);
-
-        Person person4 = new Person();
-        person4.setFirstName("hay");
-        person4.setFamilyName("durden");
-        person4.setGender(Gender.AGENDER);
-        personService.addPerson(person4);
-        personService.deletePerson(person3);
-        System.out.println("---------------id:" + person2.getId());
-        personService.addPerson(person2);
-        personService.outputPersonById(1);
-        personService.outputAllPersons();
+        userService.addUser(user2);
+        // userService.addUser(user3);
+        // userService.addUser(user4);
+        // userService.addUser(user5);
 
         // CourseService courseService = new CourseService();
         // courseService.addCourse(course1);

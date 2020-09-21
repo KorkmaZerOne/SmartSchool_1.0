@@ -1,24 +1,37 @@
 package be.intecbrussel.Service;
 
-import be.intecbrussel.Data.moduleRepository;
-import be.intecbrussel.Data.userRepository;
+import be.intecbrussel.Data.ModuleRepository;
 import be.intecbrussel.Model.Module;
-import be.intecbrussel.Model.User;
 
 public class ModuleService {
 
     public void addModule(Module module){
-        moduleRepository repository = new moduleRepository();
+        ModuleRepository repository = new ModuleRepository();
         repository.addModule(module);
     }
 
     public void outputAllModules(){
-        moduleRepository repository = new moduleRepository();
+        ModuleRepository repository = new ModuleRepository();
         repository.getAllModules();
     }
 
     public void outputModule(Long id){
-        moduleRepository repository = new moduleRepository();
+        ModuleRepository repository = new ModuleRepository();
         repository.getModuleById(id);
+    }
+
+    public void updateModule(Module module){
+        ModuleRepository repository = new ModuleRepository();
+        repository.updateModule(module);
+    }
+
+    public void deleteModule(Module module){
+        ModuleRepository repository = new ModuleRepository();
+        repository.deleteModule(module);
+    }
+
+    public void deleteModuleById(Long id){
+        ModuleRepository repository = new ModuleRepository();
+        repository.deleteModuleById(id);
     }
 }

@@ -1,45 +1,46 @@
 package be.intecbrussel.Data;
 
-import be.intecbrussel.Model.Person;
+import be.intecbrussel.Model.Module;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-public class personRepository {
+public class ModuleRepository {
 
-    public void addPerson(Person person) {
+    public void addModule(Module module) {
         EntityManager em = PersistenceProvider.createEM();
         em.getTransaction().begin();
-        em.persist(person);
+        em.persist(module);
         em.getTransaction().commit();
     }
 
-    public List<Person> getAllPersons() {
+    public List<Module> getAllModules() {
         EntityManager em = PersistenceProvider.createEM();
-        return em.createQuery("SELECT p FROM Person p ", Person.class).getResultList();
+        return em.createQuery("SELECT m FROM Module m ", Module.class).getResultList();
     }
 
-    public Optional<Person> getPersonById(int id) {
+    public Optional<Module> getModuleById(Long id) {
         EntityManager em = PersistenceProvider.createEM();
-        return Optional.of(em.find(Person.class, id));
+        return Optional.of(em.find(Module.class, id));
     }
 
-    public void updatePerson(Person person) {
+    public void updateModule(Module module) {
         EntityManager em = PersistenceProvider.createEM();
         em.getTransaction().begin();
-        em.merge(person);
+        em.merge(module);
         em.getTransaction().commit();
     }
 
-    public void deletePerson(Person person) {
+    public void deleteModule(Module module) {
         EntityManager em = PersistenceProvider.createEM();
         em.getTransaction().begin();
-        em.remove(person);
+        em.remove(module);
         em.getTransaction().commit();
     }
 
-    public void deletePersonById(int id) {
-        getPersonById(id).ifPresent(this::deletePerson);
+    public void deleteModuleById(Long id) {
+        getModuleById(id).ifPresent(this::deleteModule);
     }
+
 }

@@ -1,37 +1,37 @@
 package be.intecbrussel.Service;
 
-import be.intecbrussel.Data.personRepository;
+import be.intecbrussel.Data.PersonRepository;
 import be.intecbrussel.Model.Person;
 
 public class PersonService {
 
     public void addPerson(Person person) {
-        personRepository repository = new personRepository();
+        PersonRepository repository = new PersonRepository();
         repository.addPerson(person);
     }
 
     public void outputAllPersons() {
-        personRepository repository = new personRepository();
+        PersonRepository repository = new PersonRepository();
         repository.getAllPersons();
     }
 
     public void outputPersonById(int id) {
-        personRepository repository = new personRepository();
+        PersonRepository repository = new PersonRepository();
         repository.getPersonById(id);
     }
 
     public void updatePerson(Person person) {
-        personRepository repository = new personRepository();
+        PersonRepository repository = new PersonRepository();
         repository.updatePerson(person);
     }
 
     public void deletePerson(Person person) {
-        personRepository repository = new personRepository();
+        PersonRepository repository = new PersonRepository();
         repository.deletePerson(person);
     }
 
     public void deletePersonById(int id) {
-        personRepository repository = new personRepository();
+        PersonRepository repository = new PersonRepository();
         repository.deletePersonById(id);
     }
 }

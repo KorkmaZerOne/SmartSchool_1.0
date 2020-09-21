@@ -21,6 +21,19 @@ public class Course {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Person> persons;
 
+    public Course() {
+    }
+
+    public Course(String name, String description, String code, String imageUrl, boolean active, List<Module> modules, List<Person> persons) {
+        this.name = name;
+        this.description = description;
+        this.code = code;
+        this.imageUrl = imageUrl;
+        this.active = active;
+        this.modules = modules;
+        this.persons = persons;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,24 +1,37 @@
 package be.intecbrussel.Service;
 
-import be.intecbrussel.Data.courseRepository;
-import be.intecbrussel.Data.examRepository;
+import be.intecbrussel.Data.CourseRepository;
 import be.intecbrussel.Model.Course;
-import be.intecbrussel.Model.Exam;
 
 public class CourseService {
 
     public void addCourse(Course course) {
-        courseRepository repository = new courseRepository();
+        CourseRepository repository = new CourseRepository();
         repository.addCourse(course);
     }
 
     public void outputAllCourses() {
-        courseRepository repository = new courseRepository();
+        CourseRepository repository = new CourseRepository();
         repository.getAllCourses();
     }
 
-    public void outputCourse(Long id) {
-        courseRepository repository = new courseRepository();
+    public void outputCourseById(Long id) {
+        CourseRepository repository = new CourseRepository();
         repository.getCourseById(id);
+    }
+
+    public void updateCourse(Course course){
+        CourseRepository repository = new CourseRepository();
+        repository.updateCourse(course);
+    }
+
+    public void deleteCourse(Course course){
+        CourseRepository repository = new CourseRepository();
+        repository.deleteCourse(course);
+    }
+
+    public void deleteCourseById(Long id){
+        CourseRepository repository = new CourseRepository();
+            repository.deleteCourseById(id);
     }
 }

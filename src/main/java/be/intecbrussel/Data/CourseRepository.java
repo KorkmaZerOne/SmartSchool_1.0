@@ -1,45 +1,45 @@
 package be.intecbrussel.Data;
 
-import be.intecbrussel.Model.Exam;
+import be.intecbrussel.Model.Course;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-public class examRepository {
+public class CourseRepository {
 
-    public void addExam(Exam exam) {
+    public void addCourse(Course course) {
         EntityManager em = PersistenceProvider.createEM();
         em.getTransaction().begin();
-        em.persist(exam);
+        em.persist(course);
         em.getTransaction().commit();
     }
 
-    public List<Exam> getAllExams() {
+    public List<Course> getAllCourses() {
         EntityManager em = PersistenceProvider.createEM();
-        return em.createQuery("SELECT e FROM Exam e", Exam.class).getResultList();
+        return em.createQuery("SELECT c FROM Course c ", Course.class).getResultList();
     }
 
-    public Optional<Exam> getExamById(Long id) {
+    public Optional<Course> getCourseById(Long id) {
         EntityManager em = PersistenceProvider.createEM();
-        return Optional.of(em.find(Exam.class, id));
+        return Optional.of(em.find(Course.class, id));
     }
 
-    public void updateExam(Exam exam) {
+    public void updateCourse(Course course) {
         EntityManager em = PersistenceProvider.createEM();
         em.getTransaction().begin();
-        em.merge(exam);
+        em.merge(course);
         em.getTransaction().commit();
     }
 
-    public void deleteExam(Exam exam) {
+    public void deleteCourse(Course course) {
         EntityManager em = PersistenceProvider.createEM();
         em.getTransaction().begin();
-        em.remove(exam);
+        em.remove(course);
         em.getTransaction().commit();
     }
 
-    public void deleteExamById(Long id) {
-        getExamById(id).ifPresent(this::deleteExam);
+    public void deleteCourseById(Long id) {
+        getCourseById(id).ifPresent(this::deleteCourse);
     }
 }

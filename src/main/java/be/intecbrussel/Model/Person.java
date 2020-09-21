@@ -21,6 +21,16 @@ public class Person {
     @OneToMany(mappedBy = "person")
     private List<Grade> grade;
 
+    public Person() {
+    }
+
+    public Person(String firstName, String familyName, Gender gender, List<Course> courseHistory) {
+        this.firstName = firstName;
+        this.familyName = familyName;
+        this.gender = gender;
+        this.courseActive = courseActive;
+    }
+
     public int getId() {
         return id;
     }

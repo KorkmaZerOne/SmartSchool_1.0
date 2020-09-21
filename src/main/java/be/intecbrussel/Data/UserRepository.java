@@ -1,45 +1,45 @@
 package be.intecbrussel.Data;
 
-import be.intecbrussel.Model.Grade;
+import be.intecbrussel.Model.User;
 
-import javax.persistence.EntityManager;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
 
-public class gradeRepository {
+public class UserRepository {
 
-    public void addGrade(Grade grade) {
+    public void addUser(User user) {
         EntityManager em = PersistenceProvider.createEM();
         em.getTransaction().begin();
-        em.persist(grade);
+        em.persist(user);
         em.getTransaction().commit();
     }
 
-    public List<Grade> getAllGrades() {
+    public List<User> getAllUsers() {
         EntityManager em = PersistenceProvider.createEM();
-        return em.createQuery("SELECT g FROM Grade g", Grade.class).getResultList();
+        return em.createQuery("SELECT u FROM User u ", User.class).getResultList();
     }
 
-    public Optional<Grade> getGradeById(Long id) {
+    public Optional<User> getUserByLogin(String login) {
         EntityManager em = PersistenceProvider.createEM();
-        return Optional.of(em.find(Grade.class, id));
+        return Optional.of(em.find(User.class, login));
     }
 
-    public void updateGrade(Grade grade) {
+    public void updateUser(User user) {
         EntityManager em = PersistenceProvider.createEM();
         em.getTransaction().begin();
-        em.merge(grade);
+        em.merge(user);
         em.getTransaction().commit();
     }
 
-    public void deleteGrade(Grade grade) {
+    public void deleteUser(User user) {
         EntityManager em = PersistenceProvider.createEM();
         em.getTransaction().begin();
-        em.remove(grade);
+        em.remove(user);
         em.getTransaction().commit();
     }
 
-    public void deleteGradeById(Long id) {
-        getGradeById(id).ifPresent(this::deleteGrade);
+    public void deleteUserByLogin(String login) {
+        getUserByLogin(login).ifPresent(this::deleteUser);
     }
 }

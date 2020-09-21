@@ -1,24 +1,37 @@
 package be.intecbrussel.Service;
 
-import be.intecbrussel.Data.examRepository;
-import be.intecbrussel.Data.moduleRepository;
+import be.intecbrussel.Data.ExamRepository;
 import be.intecbrussel.Model.Exam;
-import be.intecbrussel.Model.Module;
 
 public class ExamService {
 
     public void addExam(Exam exam) {
-        examRepository repository = new examRepository();
+        ExamRepository repository = new ExamRepository();
         repository.addExam(exam);
     }
 
     public void outputAllExams(){
-        examRepository repository = new examRepository();
+        ExamRepository repository = new ExamRepository();
         repository.getAllExams();
     }
 
     public void outputExam(Long id) {
-        examRepository repository = new examRepository();
+        ExamRepository repository = new ExamRepository();
         repository.getExamById(id);
+    }
+
+    public void updateExam(Exam exam){
+        ExamRepository repository = new ExamRepository();
+        repository.updateExam(exam);
+    }
+
+    public void deleteExam(Exam exam){
+        ExamRepository repository = new ExamRepository();
+        repository.deleteExam(exam);
+    }
+
+    public void deleteExam(Long id){
+        ExamRepository repository = new ExamRepository();
+        repository.deleteExamById(id);
     }
 }
